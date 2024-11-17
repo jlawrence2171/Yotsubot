@@ -1,0 +1,15 @@
+# Ignore virtual environments
+venv/
+__pycache__/
+
+# Ignore configuration files with secrets
+config.json
+.env
+
+# Ignore system files
+*.log
+.DS_Store
+
+# Ignore emotes JSON and audio files if private
+emotes.json
+audio/
