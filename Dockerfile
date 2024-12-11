@@ -1,9 +1,17 @@
-FROM public.ecr.aws/amazonlinux/amazonlinux:latest
+# Use the official Python image as a base
+FROM python:3.11-slim
 
-# Install dependencies
-RUN yum update -y 
-RUN dnf install -y nodejs
+# Set the working directory inside the container
+WORKDIR /app
 
-COPY . ./clown-bot
+# Copy the requirements file into the container
+COPY requirements.txt .
 
-CMD cd ./clown-bot && npm i && node index.js
+# Install the Python dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the bot code into the container
+COPY . .
+
+# Set the default command to run the bot
+CMD ["python", "bot.py"]
